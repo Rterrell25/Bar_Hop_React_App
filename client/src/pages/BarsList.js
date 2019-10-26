@@ -4,17 +4,24 @@ import { Link } from 'react-router-dom'
 class BarsList extends React.Component {
   state = { bars: [] }
 
-  handleSearch = (event) => {
-    fetch(`/api/bars/search/${event.target.value}`)
+  componentDidMount() {
+    this.fetchBars(this.props.location.search.substr(7))
+  }
+
+  fetchBars = (query) => {
+    fetch(`/api/bars/search/${query}`)
     .then(response => response.json())
     .then(yelpResponse => {
       const bars = yelpResponse.map(bar => {
         return bar
       })
       this.setState({ bars })
-    }
-    )
-    }
+    })
+  }
+
+  handleSearch = (event) => {
+    this.fetchBars(event.target.value)
+  }
   
   
   render(){
@@ -29,8 +36,8 @@ class BarsList extends React.Component {
           {
             this.state.bars
             .map(bar => (
-              <Link to={`/bars/${bar.id}`}>
-            <div className="bar" key={bar.id}>
+              <Link to={`/bars/${bar.id}`} key={bar.id}>
+            <div className="bar" >
             <h3>{bar.name} ({bar.rating})</h3>
             <img src={bar.image_url} alt={bar.name}/>
             </div>
