@@ -19,10 +19,19 @@ app.get('/api/bars/search/:location', (request, response) => {
     const bars = yelpResponse.data.businesses || []
     response.json(bars)
   })
-
-
 })
 
+app.get(`/api/bars/:id`,  (request, response) => {
+  const { id } = request.params
+
+  axios.get(`https://api.yelp.com/v3/businesses/${id}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.YELP_API_KEY}`
+    }
+  }).then(yelpResponse => {
+    response.json(yelpResponse.data)
+  })
+})
 
 
 
