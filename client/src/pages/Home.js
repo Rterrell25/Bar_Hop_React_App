@@ -1,15 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
-// barsList will use this.props.location.search
 
 class Home extends React.Component{
   state = {query: ''}
 
-handleSearch = (event) => {
-  event.preventDefault()
-  this.props.history.push({pathname: '/bars', search: `?query=${event.target.query.value}`})
-}
+  handleInputChange = event => this.setState({ query: event.target.value })
+
+  handleSearch = event => {
+    event.preventDefault()
+    const { query } = this.state;
+    this.props.history.push(`/bars/${query}`)
+  }
 
   render(){
     return(
@@ -21,6 +21,8 @@ handleSearch = (event) => {
             type="text"
             placeholder="Search a bar.."
             autoComplete="off"
+            onChange={this.handleInputChange}
+
           />   
         </form>
         <h3>
