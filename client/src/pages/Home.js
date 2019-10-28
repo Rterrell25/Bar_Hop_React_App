@@ -19,15 +19,12 @@ class Home extends React.Component{
           <input
             name="query"
             type="text"
-            placeholder="Search a bar.."
+            placeholder="Search for a location"
             autoComplete="off"
             onChange={this.handleInputChange}
 
-          />   
+          />
         </form>
-        <h3>
-          this is:
-        </h3>
       </div>
     )
   }
