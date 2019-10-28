@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import InfiniteScroll from 'react-infinite-scroller'
 
 class BarsList extends React.Component {
   state = {
             bars: [],
             location: this.props.match.params.location,
-            term: this.props.match.params.term || 'drinks'
+            term: this.props.match.params.term || 'drinks',
+            page: 1,
+            total: 0
           }
 
   componentDidMount() {
@@ -35,48 +38,66 @@ class BarsList extends React.Component {
       })
     })
   }
+  getMoreBars = () => {
+    let { page } = this.state
+    page ++
+    const location = document.getElementById('location')
+    fetch(`/api/bars/search/${location}/${page}`)
+    .then(response => response.json())
+    .then(data => {
+      const bars = [...this.state.bars, ...data.bars]
+      this.setState({ bars, page })
+    })
+  }
 
   render(){
     return (
-      <div className="BarsList">
-        <h1>This is the BarsList page </h1>
+      <div>
+        <div className="h1-will">
+        <h1>BarHop </h1>
+        </div>
         <form onSubmit={this.handleSubmit}>
-          <div>
+          <div className="div2">
             <input
+              id="location"
+              className="input-will"
               type="text"
               placeholder="Search for a Bar Location"
               onChange={this.handleInputChange('location')}
               value={this.state.location}
               required
             />
-          </div>
-          <div>
             <input
               type="text"
+              className="input-will"
               placeholder="Search a bar by keyword"
               onChange={this.handleInputChange('term')}
               value={this.state.term}
             />
-          </div>
-          <div>
-            <input
+            <button
+              className="will-search-btn"
               type="submit"
               value="Search"
-            />
-          </div>
+            >Search
+            </button>
+            </div>
         </form>
         {
           this.state.bars
           .map(bar => (
             <Link to={`/bar/${bar.id}`} key={bar.id}>
-              <div className="bar" >
-              <h3>{bar.name} ({bar.rating})</h3>
-              <img src={bar.image_url} alt={bar.name}/>
+              <div className="results">
+              <h3 className="will-h3">{bar.name}</h3>
+              <img 
+              className="result-images"
+              src={bar.image_url} 
+              alt={bar.name}/>
+              <h3> Rating:  <span className="span-will">{bar.rating} ⭐️</span></h3>
               </div>
             </Link>
           ))
         }
-      </div>
+        </div>
     )
   }
 }

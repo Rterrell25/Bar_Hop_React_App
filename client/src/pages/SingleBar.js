@@ -17,7 +17,8 @@ class SingleBar extends React.Component {
         <h1>{this.state.bar.name}</h1>
       <div className="bar-data">
         <img src={this.state.bar.image_url} alt={this.state.bar.name}/>
-        {this.state.bar.name &&
+        {
+          this.state.bar.name &&
           <table>
             <tbody>
               <tr>
@@ -56,7 +57,7 @@ class SingleBar extends React.Component {
             
                 
             </tbody>
-          </table>  
+          </table>
         }
       </div>  
     </div>
