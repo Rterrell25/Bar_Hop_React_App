@@ -11,8 +11,8 @@ const App = () => (
     <NavBar/>
     <Switch> 
       <Route exact path="/" component={Home}/>
-      <Route exact path="/bars" component={BarsList}/>
-      <Route path="/bars/:id" component={SingleBar}/>
+      <Route exact path="/bars/:location" component={BarsList}/>
+      <Route path="/bar/:id" component={SingleBar}/>
     </Switch>
   </BrowserRouter>
 )

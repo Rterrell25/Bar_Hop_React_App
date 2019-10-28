@@ -7,36 +7,34 @@ const path = require("path")
 const app = express()
 const axios = require("axios")
 
-app.get('/api/bars/search/:location', (request, response) => {
-  const { location } = request.params
-
-  axios.get(`https://api.yelp.com/v3/businesses/search?term=bars&location=${location}`, {
+app.get('/api/bars/search/:location/:term', (request, response) => {
+  const { location, term } = request.params
+  const locationSearch = location ? `&location=${location}` : '';
+  const termSearch = term && term !== 'undefined' ? `&term=${term}` : ''
+  axios.get(`https://api.yelp.com/v3/businesses/search?categories=bars${locationSearch}${termSearch}`, {
     headers: {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`
     }
   })
-  .then(yelpResponse => {
-    const bars = yelpResponse.data.businesses || []
-    response.json(bars)
-  })
+  .then(yelpResponse => response.json(yelpResponse.data.businesses || []))
+  .catch(err => response.send([]))
 })
 
-app.get(`/api/bars/:id`,  (request, response) => {
+app.get(`/api/bars/:id`, async (request, response) => {
   const { id } = request.params
-
-  axios.get(`https://api.yelp.com/v3/businesses/${id}`, {
+  let { data } = await axios.get(`https://api.yelp.com/v3/businesses/${id}`, {
     headers: {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`
     }
-  }).then(yelpResponse => {
-    response.json(yelpResponse.data)
   })
+  console.log(data)
+  response.send(data);
 })
 
 
 
-const port = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080
 app.listen(
-  port,
-  () => { console.log(`API listening on port ${port}...`) }
+  PORT,
+  () => { console.log(`API listening on port ${PORT}...`) }
 )
