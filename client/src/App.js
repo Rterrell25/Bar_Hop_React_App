@@ -8,10 +8,9 @@ import NavBar from './components/NavBar'
 
 const App = () => (
   <BrowserRouter>
-    <NavBar/>
-    <Switch> 
+    <Switch>
       <Route exact path="/" component={Home}/>
-      <Route exact path="/bars/:location" component={BarsList}/>
+      <Route exact path="/bars/:location/:term?" component={BarsList}/>
       <Route path="/bar/:id" component={SingleBar}/>
     </Switch>
   </BrowserRouter>
