@@ -7,7 +7,7 @@ const path = require("path")
 const app = express()
 const axios = require("axios")
 
-app.get('/api/bars/search/:location/:term?', (request, response) => {
+app.get('/api/bars/search/:location/:term', (request, response) => {
   const { location, term } = request.params
   const locationSearch = location ? `&location=${location}` : '';
   const termSearch = term && term !== 'undefined' ? `&term=${term}` : ''
