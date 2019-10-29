@@ -2,9 +2,11 @@
   margin-top: 5px;
   font-family: 'Amatic SC', cursive;
   text-align: center;
-  font-size: 130px;
+  font-size: 180px;
   color: rgb(216, 216, 8);
-  text-shadow: 10px 10px black;
+  letter-spacing: 10px;
+  user-select: none;
+  text-shadow: 10px 10px rgba(0, 0, 0.74)
 }
 .h1-will > a {
   color: rgb(216, 216, 8);
@@ -16,7 +18,7 @@
 
 .barlist {
   display: grid;
-  grid-column-gap: 40px;
+  grid-column-gap: 10px;
   grid-row-gap: 20px;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -26,6 +28,10 @@
   display: grid;
   place-items: center;
   text-align: center;
+}
+
+.rating {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .div2{
@@ -54,12 +60,15 @@ a {
 }
 
 .input-will {
+  margin-left: 10px;
   margin-bottom: 100px;
-  width: 150px;
+  width: 300px;
   height: 30px;
   border-radius: 6px;
   font-size: 16px;
   outline: none;
+  font-family: 'Josefin Sans', sans-serif;
+  transition: all 0.5s;
 }
 .input-will:hover {
   transform: scale(1.05);
@@ -67,12 +76,15 @@ a {
 }
 
 button {
+  margin-left: 10px;
   height: 35px;
   width: 70px;
   font-size: 16px;
   border-radius: 4px;
   background-color: rgb(216, 216, 8);
   outline: none;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
 }
 
 button:hover{
@@ -80,7 +92,23 @@ button:hover{
 }
 
 body {
-  background: linear-gradient( #1f243fb4, #a6b7cc);
+  background: #1f243fb4;
+  backdrop-filter: 10px;
+  background-size: contain;
 }
 
+.beer-icon {
+  margin-bottom: -15px;
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+  
+}
+
+.beer-icon-list{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-bottom: -4px;
+}
 
