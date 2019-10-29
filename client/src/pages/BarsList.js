@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import InfiniteScroll from 'react-infinite-scroller'
+
 
 class BarsList extends React.Component {
   state = {
