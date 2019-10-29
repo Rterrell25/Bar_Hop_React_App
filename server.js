@@ -11,7 +11,7 @@ app.get('/api/bars/search/:location/:term', (request, response) => {
   const { location, term } = request.params
   const locationSearch = location ? `&location=${location}` : '';
   const termSearch = term && term !== 'undefined' ? `&term=${term}` : ''
-  axios.get(`https://api.yelp.com/v3/businesses/search?categories=bars${locationSearch}${termSearch}`, {
+  axios.get(`https://api.yelp.com/v3/businesses/search?categories=bars${locationSearch}${termSearch}&limit=50`, {
     headers: {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`
     }
@@ -27,7 +27,7 @@ app.get(`/api/bars/:id`, async (request, response) => {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`
     }
   })
-  console.log(data)
+
   response.send(data);
 })
 

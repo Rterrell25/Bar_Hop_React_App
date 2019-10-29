@@ -1,15 +1,85 @@
-/* JUST FOR DEMO PURPORSES, REPLACE WITH YOUR OWN CODE */
-
-#demo{
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.h1-will {
+  margin-top: 5px;
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+  font-size: 130px;
+  color: rgb(216, 216, 8);
+  text-shadow: 10px 10px black;
+}
+.will-h3 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: antiquewhite;
 }
 
-#demo h1{
+.barlist {
   display: grid;
-  place-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 40px;
+  grid-row-gap: 20px;
+  align-items: center;
+  width: 350px;
+  margin-left: 50px;
 }
 
-/* END DEMO */
+
+.div2{
+  text-align: center;
+}
+
+.result-images {
+  height: 200px;
+  width: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: all 0.3s;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.74);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.74);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.74);
+}
+.result-images:hover {
+  transform: scale(1.1);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.span-will {
+  color: red;
+}
+
+.input-will {
+  margin-bottom: 100px;
+  width: 150px;
+  height: 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+}
+.input-will:hover {
+  transform: scale(1.05);
+  border: 1px solid rgb(216, 216, 8);
+}
+
+button {
+  height: 35px;
+  width: 70px;
+  font-size: 16px;
+  border-radius: 4px;
+  background-color: rgb(216, 216, 8);
+  outline: none;
+}
+button:hover{
+  transform: scale(1.05)
+}
+
+
+body {
+  background: linear-gradient( #1f243fb4, #a6b7cc);
+  
+ 
+}
+
+

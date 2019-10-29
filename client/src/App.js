@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import BarsList from './pages/BarsList'
 import SingleBar from './pages/SingleBar'
-import NavBar from './components/NavBar'
+
 
 const App = () => (
   <BrowserRouter>
