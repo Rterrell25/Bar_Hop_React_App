@@ -18,14 +18,18 @@ class BarsList extends React.Component {
   handleInputChange = field => e => this.setState({ [field]: e.target.value })
 
   handleSubmit = event => {
-    event.preventDefault()
     const { location, term } = this.state;
-    this.props.history.push(`/bars/${location}/${term || ''}`)
-    this.fetchBars(location, term)
+    if (location && term) {
+      event.preventDefault()
+      this.props.history.push(`/bars/${location}/${term || ''}`)
+      this.fetchBars(location, term)
+    }
   }
 
   fetchBars = (location, term) => {
     if (!location) return;
+    localStorage.setItem('location', location)
+    localStorage.setItem('term', term)
     const url = `/api/bars/search/${location}/${term || ''}`;
     fetch(url)
     .then(response => response.json())
@@ -63,6 +67,7 @@ class BarsList extends React.Component {
               onChange={this.handleInputChange('location')}
               value={this.state.location}
               required
+              spellCheck="false"
             />
             <input
               type="text"
@@ -70,6 +75,8 @@ class BarsList extends React.Component {
               placeholder="Search a bar by keyword"
               onChange={this.handleInputChange('term')}
               value={this.state.term}
+              required
+              spellCheck="false"
             />
             <button
               className="will-search-btn"

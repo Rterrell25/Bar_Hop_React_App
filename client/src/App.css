@@ -16,15 +16,17 @@
 
 .barlist {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-column-gap: 40px;
   grid-row-gap: 20px;
   align-items: center;
-  width: 350px;
-  margin-left: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
 
+.main-result{
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
 
 .div2{
   text-align: center;
@@ -36,9 +38,7 @@
   border-radius: 8px;
   object-fit: cover;
   transition: all 0.3s;
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.74);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.74);
-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.74);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.74);
 }
 .result-images:hover {
   transform: scale(1.1);
@@ -74,15 +74,13 @@ button {
   background-color: rgb(216, 216, 8);
   outline: none;
 }
+
 button:hover{
   transform: scale(1.05)
 }
 
-
 body {
   background: linear-gradient( #1f243fb4, #a6b7cc);
-  
- 
 }
 
 
