@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import InfiniteScroll from 'react-infinite-scroller'
 
 class BarsList extends React.Component {
   state = {
@@ -53,7 +52,7 @@ class BarsList extends React.Component {
   render(){
     return (
       <React.Fragment>
-      <h1 className="h1-will">BarHop</h1>
+      <h1 className="h1-will"><a href="/">BarHop</a></h1>
         <form onSubmit={this.handleSubmit}>
           <div className="div2">
             <input
