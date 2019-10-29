@@ -6,6 +6,9 @@
   color: rgb(216, 216, 8);
   text-shadow: 10px 10px black;
 }
+.h1-will > a {
+  color: rgb(216, 216, 8);
+}
 .will-h3 {
   font-family: 'Josefin Sans', sans-serif;
   color: antiquewhite;
