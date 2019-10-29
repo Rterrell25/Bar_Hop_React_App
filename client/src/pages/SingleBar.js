@@ -1,5 +1,6 @@
 import React from 'react'
 import './SingleBar.css'
+import { Link } from 'react-router-dom'
 
 class SingleBar extends React.Component {
   state = {bar: {Name:'Loading...'}}
@@ -13,9 +14,15 @@ fetchBar = () => {
 }
 
 render(){
-
+  const location = localStorage.getItem('location')
+  const term = localStorage.getItem('term') || ''
   return(
-    <body className="i-want-yo-body">
+    <div className="i-want-yo-body">
+      {
+        location                                            ?
+        <Link to={`/bars/${location}/${term}`}>Back</Link>  :
+        <Link to="/">Back</Link>
+      }
       <div className="single-bar-rob">
         <h1>{this.state.bar.name}</h1>
       </div>
@@ -67,7 +74,7 @@ render(){
         
         </div>
       </div>
-  </body>
+  </div>
   )
 }
   componentDidMount(){
