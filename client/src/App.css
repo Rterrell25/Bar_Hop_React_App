@@ -6,10 +6,12 @@
   color: rgb(216, 216, 8);
   letter-spacing: 10px;
   user-select: none;
-  text-shadow: 10px 10px rgba(0, 0, 0.74)
+  text-shadow: 10px 10px rgba(0, 0, 0.74);
+  animation: beatingHeart 0.5s;
 }
 .h1-will > a {
   color: rgb(216, 216, 8);
+  
 }
 .will-h3 {
   font-family: 'Josefin Sans', sans-serif;
@@ -112,3 +114,16 @@ body {
   margin-bottom: -4px;
 }
 
+.loader {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+  margin-left: 45%;
+  margin-bottom: 10%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

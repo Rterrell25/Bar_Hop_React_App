@@ -7,8 +7,7 @@ class BarsList extends React.Component {
             bars: [],
             location: this.props.match.params.location,
             term: this.props.match.params.term || 'drinks',
-            page: 1,
-            total: 0
+            loader: true,
           }
 
   componentDidMount() {
@@ -34,15 +33,18 @@ class BarsList extends React.Component {
       this.setState({
         bars: yelpResponse,
         location,
-        term
+        term,
+        loader: false,
       })
     })
   }
 
   render(){
     return (
+      <>
       <React.Fragment>
       <h1 className="h1-will"><a href="/">BarHop</a></h1>
+      {this.state.loader ? <img src={Beer} className="loader" alt="beer"/> : ''}
         <form className="form-class" onSubmit={this.handleSubmit}>
           <div className="div2">
             <input
@@ -93,6 +95,7 @@ class BarsList extends React.Component {
         }
        </div>
        </React.Fragment>
+       </>
     )
   }
 }
