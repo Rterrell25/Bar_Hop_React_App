@@ -1,4 +1,7 @@
 import React from 'react'
+import './HomePage.css'
+import Beer from './images/beer.svg'
+
 
 class Home extends React.Component{
   state = {query: ''}
@@ -13,17 +16,31 @@ class Home extends React.Component{
 
   render(){
     return(
-      <div className="home-page-search">
-        <h1>Bar Hop</h1>
-        <form onSubmit={this.handleSearch}>
-          <input
-            name="query"
-            type="text"
-            placeholder="Search for a location"
-            autoComplete="off"
-            onChange={this.handleInputChange}
+      <div className="home-page-body">
+        <h1 className="home-page-title">Bar Hop</h1>
+        <form                       
+          className="home-page-form"
+          onSubmit={this.handleSearch}
+        >
+         
+          <div className="home-search-box">
+            <label
+              htmlFor="home-search-id"
+            >  
+              <img src={Beer} alt="beer icon" />
+            
 
-          />
+            <input
+              id="search-box-id"
+              className="home-page-input"
+              name="query"
+              type="text"
+              // placeholder=""
+              autoComplete="off"
+              onChange={this.handleInputChange}
+            />
+               </label> 
+          </div>
         </form>
       </div>
     )
