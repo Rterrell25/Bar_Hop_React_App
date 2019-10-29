@@ -1,0 +1,151 @@
+
+.home-page-body{
+display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: repeat(3, 1fr);
+height: 100vh;
+/* background-image: url('/background1.jpeg'); */
+background-image: url('/unsplash3.jpg');
+background-size: 100%;
+}
+
+.home-page-title{
+  margin: 0;
+  display: grid;
+  font-family: 'Amatic SC', cursive;
+  font-size: 7rem;
+  justify-content: center;
+  text-align: center;
+  font-size: 180px;
+  color: rgb(216, 216, 8);
+  letter-spacing: 10px;
+  user-select: none;
+  text-shadow: #FC0 1px 0 10px;
+}
+
+.home-page-form{
+  justify-content: center;
+  align-content: center;
+  display: grid;
+}
+
+.home-page-input{
+  border: none;
+  outline: none;
+  background:none;
+  color: rgb(216, 216, 8);
+  height: 60px;
+  width: 10px;
+  padding-right: 60px;
+  font-size: 60px;
+  cursor: pointer;
+  transition: 1s;
+  text-indent: 55px;
+  }
+
+  label{
+    display: inline-block;
+  }
+
+.home-search-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+
+.home-page-form img{
+  cursor: pointer;
+  position: absolute;
+  float:left;
+  height: 57px;
+  width: 57px;
+  top: 15px;
+  left: 0px;
+  z-index:0;
+  box-shadow: 0px 0px 15px yellow;
+  border-radius: 50%;
+  pointer-events: none;
+
+}
+
+.home-page-input:hover {
+  border-bottom: 3px solid yellow;
+  width: 300px;
+  z-index: 5;
+}
+
+/* ******************* */
+/* 
+.home-page-body{
+  background: linear-gradient(45deg, #1f243fb4, #a1c7f7);
+  background-size: 400% 400%;
+  animation: BackgroundGradient 5s ease infinite;
+}
+
+@keyframes BackgroundGradient {
+  0% {background-position: 0% 25%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}  */
+
+
+
+
+
+
+/* ************************ */
+/* 
+html, body {width:100%; height:100vh; margin:0; padding:0;}
+
+@keyframes bganimation
+{
+  0%{
+    background-position: 
+        -100% -100%,
+        200% 200%,
+        -100% 200%,
+        200% -100%;
+  }
+  50% {
+        background-position: 
+            200% 100%,
+            -200% 100%,
+            100% 0%,
+            0% 100%;
+  }
+  100% {
+        background-position: 
+            -100% -100%,
+            200% 200%,
+            -100% 200%,
+            200% -100%;
+  }
+}
+html {
+    background: 
+        radial-gradient(ellipse at center, rgba(10, 10, 10, 0.3) 10%, rgba(0,0,0,0) 70%), 
+        radial-gradient(ellipse at center, rgba(115, 171, 197, 0.877)0%, rgba(0,0,0,0) 70%), 
+        radial-gradient(ellipse at center, rgba(5, 8, 37, 0.644) 15%, rgba(0,0,0,0) 70%) 
+        #c3d7db;
+    background-repeat: 
+        repeat-x 
+        repeat-y, 
+        repeat-x;
+    background-size: 
+        900px 900px,
+        900px 900px,
+        900px 900px;
+    background-attachment: fixed;
+    
+    animation:bganimation 20s infinite;
+}
+
+body { height: 100vh;}
+
+home-page-body{ height: 100vh;} */
+
+
+/* ************************ */
+
