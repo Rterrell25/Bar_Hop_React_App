@@ -52,10 +52,8 @@ class BarsList extends React.Component {
 
   render(){
     return (
-      <div>
-        <div className="h1-will">
-        <h1>BarHop </h1>
-        </div>
+      <React.Fragment>
+      <h1 className="h1-will">BarHop</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="div2">
             <input
@@ -82,10 +80,12 @@ class BarsList extends React.Component {
             </button>
             </div>
         </form>
+      <div className="barlist">
         {
           this.state.bars
           .map(bar => (
             <Link to={`/bar/${bar.id}`} key={bar.id}>
+            <div className="main-result">
               <div className="results">
               <h3 className="will-h3">{bar.name}</h3>
               <img 
@@ -94,10 +94,12 @@ class BarsList extends React.Component {
               alt={bar.name}/>
               <h3> Rating:  <span className="span-will">{bar.rating} ⭐️</span></h3>
               </div>
+              </div>
             </Link>
           ))
         }
-        </div>
+       </div>
+       </React.Fragment>
     )
   }
 }
