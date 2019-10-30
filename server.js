@@ -31,6 +31,16 @@ app.get(`/api/bars/:id`, async (request, response) => {
   response.send(data);
 })
 
+app.get(`/api/bars/:id/reviews/`, async(request,response) => {
+  const { id } = request.params
+  let { data } = await axios.get(`https://api.yelp.com/v3/businesses/${id}/reviews`, {
+    headers: {
+      Authorization: `Bearer ${process.env.YELP_API_KEY}`
+    }
+  })
+  response.send(data)
+})
+
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')))
