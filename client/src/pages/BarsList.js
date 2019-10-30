@@ -138,6 +138,7 @@ handleSortHighPrice = event => {
           this.state.bars
           .map(bar => (
             <Link to={`/bar/${bar.id}`} key={bar.id}>
+              <div className="Rob">
             <div className="main-result">
               <div className="results">
                 <h3 className="will-h3">{bar.name}</h3>
@@ -145,7 +146,7 @@ handleSortHighPrice = event => {
                   className="result-images"
                   src={bar.image_url} 
                   alt={bar.name}/>
-                <h3 className="will-h3"> 
+                <h3 className="will-h5"> 
                   Rating:  
                    <span className="span-will">
                   
@@ -154,6 +155,7 @@ handleSortHighPrice = event => {
                 </h3>
                 <h4 className="will-h4">{bar.price || 'Price Not Available'}</h4>
               </div>
+            </div>
             </div>
             </Link>
           ))

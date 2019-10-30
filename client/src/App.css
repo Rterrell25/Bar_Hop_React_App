@@ -16,10 +16,20 @@
 .will-h3 {
   font-family: 'Josefin Sans', sans-serif;
   color: antiquewhite;
+  font-weight: bold;
+  font-size: 25px;
+ 
+
+  
 }
 .will-h4 {
   font-family: 'Josefin Sans', sans-serif;
   color: antiquewhite;
+}
+.will-h5 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: antiquewhite;
+
 }
 
 .barlist {
@@ -97,10 +107,11 @@ a {
 
 
 .sort-section{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 200px));
-  margin-left: 19%;
-  margin-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+  
+
 }
 button {
   margin-left: 10px;
@@ -215,4 +226,12 @@ body {
   
   margin-top: -80px;
   height: 120px;
+}
+.Rob {
+  background-color: rgba(167, 167, 166, 0.603);
+  border-radius: 16px;
+  /* margin: 0 30px 0 30px; */
+  /* background-color: rgb(216, 216, 8); */
+  outline: none;
+  
 }
