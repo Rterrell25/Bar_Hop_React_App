@@ -7,7 +7,7 @@
   letter-spacing: 10px;
   user-select: none;
   text-shadow: 10px 10px rgba(0, 0, 0.74);
-  animation: beatingHeart 0.5s;
+  animation: hop 1.5s ease-in-out infinite;
 }
 .h1-will > a {
   color: rgb(216, 216, 8);
@@ -50,7 +50,7 @@
   border-radius: 8px;
   object-fit: cover;
   transition: all 0.3s;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.74);
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.74);
 }
 .result-images:hover {
   transform: scale(1.1);
@@ -67,8 +67,7 @@ a {
 
 .input-will {
   margin-left: 10px;
-  margin-bottom: 100px;
-  width: 300px;
+  width: 200px;
   height: 30px;
   border-radius: 6px;
   font-size: 16px;
@@ -80,11 +79,27 @@ a {
   transform: scale(1.05);
   border: 1px solid rgb(216, 216, 8);
 }
+.input-will-2 {
+  margin-left: 10px;
+  margin-bottom: 100px;
+  width: 200px;
+  height: 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  font-family: 'Josefin Sans', sans-serif;
+  transition: all 0.5s;
+}
+.input-will-2:hover {
+  transform: scale(1.05);
+  border: 1px solid rgb(216, 216, 8);
+}
+
 
 .sort-section{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  margin-left: 6%;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 200px));
+  margin-left: 19%;
   margin-bottom: 5%;
 }
 button {
@@ -97,22 +112,24 @@ button {
   outline: none;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: bold;
+  transition: all 0.5s;
 }
 
 button:hover{
-  transform: scale(1.05)
+  transform: scale(1.1)
 }
 
 body {
-  background: #1f243fcd;
-  backdrop-filter: 10px;
-  background-size: contain;
+  background: rgb(90,128,144);
+  background: radial-gradient(circle, rgba(90,128,144,1) 0%, rgba(9,121,115,1) 49%, rgba(3,44,68,1) 100%);
 }
 
 .beer-icon {
   margin-bottom: -15px;
   width: 40px;
   height: 40px;
+  animation: wave 0.8s linear infinite;
+  cursor: pointer;
   
 }
 
@@ -137,6 +154,21 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+@keyframes wave {
+  0% { transform: rotate(  0.0deg) }
+   10% { transform: rotate(-10.0deg) }
+   20% { transform: rotate( 12.0deg) }
+   30% { transform: rotate(-10.0deg) }
+   40% { transform: rotate(  9.0deg) }
+   50% { transform: rotate(  0.0deg) }
+  100% { transform: rotate(  0.0deg) }
+}
+
+@keyframes flash
+{
+    from {text-shadow: 10px 10px 5px rgba(0, 0, 0.74);}
+    to {text-shadow : none;}
+}
 #transparent-button {
   background: transparent;
   color: transparent;
@@ -146,18 +178,41 @@ body {
 .highratingbutton {
   width: 200px;
   height: 50px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.74);
 }
 .lowratingbutton {
   width: 200px;
   height: 50px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.74);
 }
 
 .pricelow {
   width: 200px;
   height: 50px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.74);
 }
 
 .pricehigh {
   width: 200px;
   height: 50px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.74);
+}
+
+@keyframes hop {
+  0%, 100% {
+    transform: rotate(0deg) skew(10deg) translate(0,0);
+    text-shadow: -5px 5px 0 rgba(0,0,0,.2);
+  }
+  
+  50% {
+    transform: rotate(0deg) skew(10deg) translate(30px, -30px);
+    text-shadow: -30px 30px 0 rgba(0,0,0,.2);
+    
+  }
+}
+
+.form-div {
+  
+  margin-top: -80px;
+  height: 120px;
 }

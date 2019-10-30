@@ -96,7 +96,7 @@ handleSortHighPrice = event => {
       <React.Fragment>
       <h1 className="h1-will"><a href="/">BarHop</a></h1>
       {this.state.loader ? <img src={Beer} className="loader" alt="beer"/> : ''}
-        <form onSubmit={this.handleSubmit}>
+        <form className="form-div" onSubmit={this.handleSubmit}>
           <div className="div2">
             <input
               id="location"
@@ -110,7 +110,7 @@ handleSortHighPrice = event => {
             />
             <input
               type="text"
-              className="input-will"
+              className="input-will-2"
               placeholder="Search a bar by keyword"
               onChange={this.handleInputChange('term')}
               value={this.state.term}
