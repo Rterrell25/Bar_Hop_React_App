@@ -31,9 +31,17 @@ app.get(`/api/bars/:id`, async (request, response) => {
   response.send(data);
 })
 
-
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')))
+  // Handle React routing, return all requests to React app
+  app.get('*', (request, response) => {
+    response.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+  })
+}
 
 const PORT = process.env.PORT || 8080
+
 app.listen(
   PORT,
   () => { console.log(`API listening on port ${PORT}...`) }
