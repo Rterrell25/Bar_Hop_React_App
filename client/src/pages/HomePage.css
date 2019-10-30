@@ -4,7 +4,6 @@ display: grid;
 grid-template-columns: 1fr;
 grid-template-rows: repeat(3, 1fr);
 height: 100vh;
-/* background-image: url('/background1.jpeg'); */
 background-image: url('/unsplash3.jpg');
 background-size: 100%;
 }
@@ -21,6 +20,7 @@ background-size: 100%;
   letter-spacing: 10px;
   user-select: none;
   text-shadow: #FC0 1px 0 10px;
+  animation: flicker 3s linear infinite;
 }
 
 .home-page-form{
@@ -32,20 +32,22 @@ background-size: 100%;
 .home-page-input{
   border: none;
   outline: none;
-  background:none;
+  background: none;
   color: rgb(216, 216, 8);
   height: 60px;
   width: 10px;
+  user-select: none;
   padding-right: 60px;
-  font-size: 60px;
+  font-size: 80px;
+  font-family: 'Josefin Sans', sans-serif;
   cursor: pointer;
-  transition: 1s;
+  transition: 2s;
   text-indent: 55px;
   }
 
-  label{
-    display: inline-block;
-  }
+.home-page-label{
+  display: inline-block;
+}
 
 .home-search-box{
   position: absolute;
@@ -67,12 +69,21 @@ background-size: 100%;
   box-shadow: 0px 0px 15px yellow;
   border-radius: 50%;
   pointer-events: none;
-
 }
 
 .home-page-input:hover {
   border-bottom: 3px solid yellow;
-  width: 300px;
+  width: 500px;
   z-index: 5;
 }
 
+
+@keyframes flicker {
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+		opacity: .99;
+		text-shadow: -1px -1px 0, $outline, 1px -1px 0 $outline, -1px 1px 0 $outline, 1px 1px 0 $outline, 0 -2px 8px, 0 0 2px, 0 0 5px #ff7e00, 0 0 15px #ff4444, 0 0 2px #ff7e00, 0 2px 3px #000;
+	}
+	20%, 21.999%, 63%, 64%, 65%, 80% {
+		opacity: 0.4;
+	}
+}
