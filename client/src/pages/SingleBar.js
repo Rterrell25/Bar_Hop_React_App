@@ -3,7 +3,7 @@ import './SingleBar.css'
 import { Link } from 'react-router-dom'
 
 class SingleBar extends React.Component {
-  state = {bar: {Name:'Loading...'}}
+  state = {bar: {Name:'Loading...'}, reviews: [], reviews_: []}
 
 
 
@@ -12,8 +12,19 @@ fetchBar = () => {
   .then(response=>response.json())
   .then(bar => this.setState({bar}))
 }
-
+fetchReviews = () => {
+  fetch(`/api/bars/${this.props.match.params.id}/reviews`)
+  .then(response=>response.json())
+  .then(reviews=> this.setState({reviews}))
+  .then(reviews => {
+    const reviews_ = this.state.reviews.reviews.map(({user, rating, text}) => ({name: user.name, rating, text}))
+    console.table(reviews_)
+    this.setState({reviews_})
+  })
+}
 render(){
+  console.log(this.state)
+  
   const location = localStorage.getItem('location')
   const term = localStorage.getItem('term') || ''
   return(
@@ -71,14 +82,21 @@ render(){
            </tbody>
           </table>
           }
-        
+        <div>
+         
+        </div>
         </div>
       </div>
+      <div>
+            {this.state.reviews_.map(review => Object.entries(review).map(([k, v]) => <p>{k}: {v}</p>))}
+          </div>
   </div>
+
   )
 }
   componentDidMount(){
     this.fetchBar()
+    this.fetchReviews()
   }
 }
 
