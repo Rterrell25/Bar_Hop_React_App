@@ -43,6 +43,35 @@ handleSortLowRating = event => {
   this.setState({ bars: sortedByLowRating})
 }
 
+handleSortLowPrice = event => {
+  const { bars } = this.state 
+  const sortedBarsLowPrice = bars.sort((a,b) => {
+    if (a.price && b.price){
+      return (a.price.length - b.price.length)
+    }else if (a.price){
+      return -1
+    }else {
+      return 1
+    }
+  })
+  this.setState({bars: sortedBarsLowPrice})
+}
+
+handleSortHighPrice = event => {
+  const { bars } = this.state
+  const sortedBarsHighPrice = bars.sort((a,b) => {
+    if (a.price && b.price){
+      return (b.price.length - a.price.length)
+    }else if (b.price){
+      return 1
+    }else if (b.price - a.price){
+      return 0
+    }else {
+      return -1
+    }
+  })
+  this.setState({bars: sortedBarsHighPrice})
+}
 
   fetchBars = (location, term) => {
     if (!location) return;
@@ -97,8 +126,12 @@ handleSortLowRating = event => {
             </button>
             </div>
         </form>
+        <div className="sort-section">
         <button className="highratingbutton" onClick={this.handleSortRating}>Sort By Highest Rated </button>
         <button className="lowratingbutton" onClick={this.handleSortLowRating}>Sort By Lowest Rated</button>
+        <button className="pricelow" onClick={this.handleSortLowPrice}>Price: Low to High</button>
+        <button className="pricehigh" onClick ={this.handleSortHighPrice}>Price: High to Low</button>
+        </div>
         
       <div className="barlist">
         {
@@ -119,6 +152,7 @@ handleSortLowRating = event => {
                   {[...Array(Math.floor(bar.rating)).keys()].map(i => <img src={Beer} key={`beericon${i}`} className="beer-icon-list" alt="beer-icon"/>)}
                   </span>
                 </h3>
+                <h4 className="will-h4">{bar.price || '-'}</h4>
               </div>
             </div>
             </Link>

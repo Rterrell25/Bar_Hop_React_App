@@ -17,6 +17,10 @@
   font-family: 'Josefin Sans', sans-serif;
   color: antiquewhite;
 }
+.will-h4 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: antiquewhite;
+}
 
 .barlist {
   display: grid;
@@ -77,6 +81,12 @@ a {
   border: 1px solid rgb(216, 216, 8);
 }
 
+.sort-section{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-left: 6%;
+  margin-bottom: 5%;
+}
 button {
   margin-left: 10px;
   height: 35px;
@@ -138,6 +148,16 @@ body {
   height: 50px;
 }
 .lowratingbutton {
+  width: 200px;
+  height: 50px;
+}
+
+.pricelow {
+  width: 200px;
+  height: 50px;
+}
+
+.pricehigh {
   width: 200px;
   height: 50px;
 }
