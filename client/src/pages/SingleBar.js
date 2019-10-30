@@ -22,6 +22,7 @@ fetchReviews = () => {
     this.setState({ reviews })
   })
 }
+
 render(){
   const location = localStorage.getItem('location')
   const term = localStorage.getItem('term') || ''
@@ -29,15 +30,15 @@ render(){
     <div className="i-want-yo-body">
       {
         location                                            ?
-        <Link to={`/bars/${location}/${term}`}>Back</Link>  :
+        <Link to={`/bars/${location}/${term}`}className="backRob">Back</Link>  :
         <Link to="/">Back</Link>
       }
       {
         this.state.loader ?
-        <img src={Beer} className="loader" alt="beer"/> :
+        <img src={Beer} className="loaderRob" alt="beer"/> :
         <>
           <div className="single-bar-rob">
-            <h1>{this.state.bar.name}</h1>
+            <h1 className="single-page-title">{this.state.bar.name}</h1>
           </div>
           <div className="containerRob">
             <div className="bar-data-rob">
@@ -50,35 +51,35 @@ render(){
               <table>
                 <tbody>
                 <tr>
-                  <td>Name</td>
+                  <td>Name: </td>
                   <td>{this.state.bar["name"]}</td>
                 </tr>
                 <tr>
-                  <td>Reviews</td>
+                  <td>Reviews: </td>
                   <td>{this.state.bar["review_count"]}</td>
                 </tr>
                 <tr>
-                  <td>Phone</td>
+                  <td>Phone: </td>
                   <td>{this.state.bar["display_phone"]}</td>
 
                 </tr>
                 <tr>
-                  <td>Rating</td>
-                  <td>{this.state.bar["rating"]}</td>
+                  <td>Rating: </td>
+                  <td>{this.state.bar["rating"]}/5</td>
                 </tr>
                 <tr>
-                  <td>Price</td>
+                  <td>Price: </td>
                   <td>{this.state.bar["price"]}</td>
                 </tr>
                 <tr>
-                  <td>Address</td>
+                  <td>Address: </td>
                   <td>{this.state.bar.location.address1}</td>
                   <td>{this.state.bar.location.city},</td>
                   <td>{this.state.bar.location.state}</td>
                   <td>{this.state.bar.location.zip_code}</td>
               </tr>
               <tr>
-                <td>Category</td>
+                <td>Category:  </td>
                 <td>{this.state.bar.categories[0].title}</td>
               </tr>
               </tbody>
@@ -88,14 +89,18 @@ render(){
           </div>
           </div>
         </div>
-        <div>
+        <h3 className ="h3-Rob">BarHop Reviews</h3>
+        <div className ="reviewContainerBox">
+        
           {
             this.state.reviews
               .map((review, index) => (
+
                 <div key={index} className="review">
-                  <div className="review-name">Name: {review.name}</div>
-                  <div className="review-rating">Rating: {review.rating}</div>
+                  <div className="review-name"> {review.name}</div>
+                  <div className="review-rating">Rating: {review.rating}/5</div>
                   <div className="review-text">Review: {review.text}</div>
+                  <br></br>
                 </div>
               ))
 
