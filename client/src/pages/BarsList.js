@@ -152,7 +152,7 @@ handleSortHighPrice = event => {
                   {[...Array(Math.floor(bar.rating)).keys()].map(i => <img src={Beer} key={`beericon${i}`} className="beer-icon-list" alt="beer-icon"/>)}
                   </span>
                 </h3>
-                <h4 className="will-h4">{bar.price || '-'}</h4>
+                <h4 className="will-h4">{bar.price || 'Price Not Available'}</h4>
               </div>
             </div>
             </Link>
