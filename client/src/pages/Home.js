@@ -33,6 +33,7 @@ class Home extends React.Component{
               className="home-page-input"
               name="query"
               type="text"
+              placeholder="Search a location.."
               spellCheck="false"
               autoComplete="off"
               onChange={this.handleInputChange}

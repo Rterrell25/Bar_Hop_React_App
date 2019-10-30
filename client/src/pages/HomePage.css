@@ -4,7 +4,7 @@ display: grid;
 grid-template-columns: 1fr;
 grid-template-rows: repeat(3, 1fr);
 height: 100vh;
-background-image: url('/unsplash3.jpg');
+background-image: url('/unsplash6.jpg');
 background-size: 100%;
 }
 
@@ -34,11 +34,11 @@ background-size: 100%;
   outline: none;
   background: none;
   color: rgb(216, 216, 8);
-  height: 60px;
+  height: 70px;
   width: 10px;
   user-select: none;
   padding-right: 60px;
-  font-size: 80px;
+  font-size: 50px;
   font-family: 'Josefin Sans', sans-serif;
   cursor: pointer;
   transition: 2s;
@@ -75,8 +75,12 @@ background-size: 100%;
   border-bottom: 3px solid yellow;
   width: 500px;
   z-index: 5;
+  color: yellow
 }
 
+.home-page-input::placeholder{
+  color:rgb(212, 207, 207);
+}
 
 @keyframes flicker {
 	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
