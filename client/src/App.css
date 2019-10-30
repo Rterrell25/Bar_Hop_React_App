@@ -2,21 +2,29 @@
   margin-top: 5px;
   font-family: 'Amatic SC', cursive;
   text-align: center;
-  font-size: 130px;
+  font-size: 180px;
   color: rgb(216, 216, 8);
-  text-shadow: 10px 10px black;
+  letter-spacing: 10px;
+  user-select: none;
+  text-shadow: 10px 10px rgba(0, 0, 0.74);
+  animation: beatingHeart 0.5s;
 }
 .h1-will > a {
   color: rgb(216, 216, 8);
+  
 }
 .will-h3 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: antiquewhite;
+}
+.will-h4 {
   font-family: 'Josefin Sans', sans-serif;
   color: antiquewhite;
 }
 
 .barlist {
   display: grid;
-  grid-column-gap: 40px;
+  grid-column-gap: 10px;
   grid-row-gap: 20px;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -26,6 +34,10 @@
   display: grid;
   place-items: center;
   text-align: center;
+}
+
+.rating {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .div2{
@@ -54,25 +66,37 @@ a {
 }
 
 .input-will {
+  margin-left: 10px;
   margin-bottom: 100px;
-  width: 150px;
+  width: 300px;
   height: 30px;
   border-radius: 6px;
   font-size: 16px;
   outline: none;
+  font-family: 'Josefin Sans', sans-serif;
+  transition: all 0.5s;
 }
 .input-will:hover {
   transform: scale(1.05);
   border: 1px solid rgb(216, 216, 8);
 }
 
+.sort-section{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-left: 6%;
+  margin-bottom: 5%;
+}
 button {
+  margin-left: 10px;
   height: 35px;
   width: 70px;
   font-size: 16px;
   border-radius: 4px;
   background-color: rgb(216, 216, 8);
   outline: none;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
 }
 
 button:hover{
@@ -80,7 +104,60 @@ button:hover{
 }
 
 body {
-  background: linear-gradient( #1f243fb4, #a6b7cc);
+  background: #1f243fb4;
+  backdrop-filter: 10px;
+  background-size: contain;
 }
 
+.beer-icon {
+  margin-bottom: -15px;
+  width: 40px;
+  height: 40px;
+  
+}
 
+.beer-icon-list{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  margin-bottom: -4px;
+}
+
+.loader {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+  margin-left: 45%;
+  margin-bottom: 10%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#transparent-button {
+  background: transparent;
+  color: transparent;
+  border: none;
+}
+
+.highratingbutton {
+  width: 200px;
+  height: 50px;
+}
+.lowratingbutton {
+  width: 200px;
+  height: 50px;
+}
+
+.pricelow {
+  width: 200px;
+  height: 50px;
+}
+
+.pricehigh {
+  width: 200px;
+  height: 50px;
+}

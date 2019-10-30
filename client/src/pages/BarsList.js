@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Beer from './images/beer.svg'
 
 class BarsList extends React.Component {
   state = {
             bars: [],
             location: this.props.match.params.location,
-            term: this.props.match.params.term || 'drinks',
-            page: 1,
-            total: 0
+            term: this.props.match.params.term || 'bars',
+            loader: true,
           }
 
   componentDidMount() {
-    const { location, term='drinks' } = this.props.match.params;
+    const { location, term='bars' } = this.props.match.params;
     location && this.fetchBars(location, term)
   }
 
@@ -26,6 +26,53 @@ class BarsList extends React.Component {
     }
   }
 
+handleSortRating = event => {
+  const { bars } = this.state
+  const sortedBars = bars.sort((a,b) => {
+    return b.rating - a.rating
+  })
+  
+  this.setState({ bars: sortedBars })
+}
+
+handleSortLowRating = event => {
+  const { bars } = this.state 
+  const sortedByLowRating = bars.sort((a,b) => {
+    return a.rating - b.rating
+  })
+  this.setState({ bars: sortedByLowRating})
+}
+
+handleSortLowPrice = event => {
+  const { bars } = this.state 
+  const sortedBarsLowPrice = bars.sort((a,b) => {
+    if (a.price && b.price){
+      return (a.price.length - b.price.length)
+    }else if (a.price){
+      return -1
+    }else {
+      return 1
+    }
+  })
+  this.setState({bars: sortedBarsLowPrice})
+}
+
+handleSortHighPrice = event => {
+  const { bars } = this.state
+  const sortedBarsHighPrice = bars.sort((a,b) => {
+    if (a.price && b.price){
+      return (b.price.length - a.price.length)
+    }else if (b.price){
+      return 1
+    }else if (b.price - a.price){
+      return 0
+    }else {
+      return -1
+    }
+  })
+  this.setState({bars: sortedBarsHighPrice})
+}
+
   fetchBars = (location, term) => {
     if (!location) return;
     localStorage.setItem('location', location)
@@ -37,26 +84,18 @@ class BarsList extends React.Component {
       this.setState({
         bars: yelpResponse,
         location,
-        term
+        term,
+        loader: false,
       })
-    })
-  }
-  getMoreBars = () => {
-    let { page } = this.state
-    page ++
-    const location = document.getElementById('location')
-    fetch(`/api/bars/search/${location}/${page}`)
-    .then(response => response.json())
-    .then(data => {
-      const bars = [...this.state.bars, ...data.bars]
-      this.setState({ bars, page })
     })
   }
 
   render(){
     return (
+      <>
       <React.Fragment>
       <h1 className="h1-will"><a href="/">BarHop</a></h1>
+      {this.state.loader ? <img src={Beer} className="loader" alt="beer"/> : ''}
         <form onSubmit={this.handleSubmit}>
           <div className="div2">
             <input
@@ -78,14 +117,22 @@ class BarsList extends React.Component {
               required
               spellCheck="false"
             />
-            <button
-              className="will-search-btn"
-              type="submit"
-              value="Search"
-            >Search
+            <button type="submit" id="transparent-button">
+            <img src={Beer} 
+            className="beer-icon" 
+            alt="beer-icon"
+            
+            />
             </button>
             </div>
         </form>
+        <div className="sort-section">
+        <button className="highratingbutton" onClick={this.handleSortRating}>Sort By Highest Rated </button>
+        <button className="lowratingbutton" onClick={this.handleSortLowRating}>Sort By Lowest Rated</button>
+        <button className="pricelow" onClick={this.handleSortLowPrice}>Price: Low to High</button>
+        <button className="pricehigh" onClick ={this.handleSortHighPrice}>Price: High to Low</button>
+        </div>
+        
       <div className="barlist">
         {
           this.state.bars
@@ -93,19 +140,27 @@ class BarsList extends React.Component {
             <Link to={`/bar/${bar.id}`} key={bar.id}>
             <div className="main-result">
               <div className="results">
-              <h3 className="will-h3">{bar.name}</h3>
-              <img 
-              className="result-images"
-              src={bar.image_url} 
-              alt={bar.name}/>
-              <h3> Rating:  <span className="span-will">{bar.rating} ⭐️</span></h3>
+                <h3 className="will-h3">{bar.name}</h3>
+                  <img 
+                  className="result-images"
+                  src={bar.image_url} 
+                  alt={bar.name}/>
+                <h3 className="will-h3"> 
+                  Rating:  
+                   <span className="span-will">
+                  
+                  {[...Array(Math.floor(bar.rating)).keys()].map(i => <img src={Beer} key={`beericon${i}`} className="beer-icon-list" alt="beer-icon"/>)}
+                  </span>
+                </h3>
+                <h4 className="will-h4">{bar.price || 'Price Not Available'}</h4>
               </div>
-              </div>
+            </div>
             </Link>
           ))
         }
        </div>
        </React.Fragment>
+       </>
     )
   }
 }
