@@ -101,7 +101,6 @@ body {
 
 .beer-icon {
   margin-bottom: -15px;
-  margin-left: 5px;
   width: 40px;
   height: 40px;
   
@@ -126,4 +125,19 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+#transparent-button {
+  background: transparent;
+  color: transparent;
+  border: none;
+}
+
+.highratingbutton {
+  width: 200px;
+  height: 50px;
+}
+.lowratingbutton {
+  width: 200px;
+  height: 50px;
 }

@@ -6,26 +6,48 @@ class BarsList extends React.Component {
   state = {
             bars: [],
             location: this.props.match.params.location,
-            term: this.props.match.params.term || 'drinks',
+            term: this.props.match.params.term || 'bars',
             loader: true,
           }
 
   componentDidMount() {
-    const { location, term='drinks' } = this.props.match.params;
+    const { location, term='bars' } = this.props.match.params;
     location && this.fetchBars(location, term)
   }
 
   handleInputChange = field => e => this.setState({ [field]: e.target.value })
 
   handleSubmit = event => {
-    event.preventDefault()
     const { location, term } = this.state;
-    this.props.history.push(`/bars/${location}/${term || ''}`)
-    this.fetchBars(location, term)
+    if (location && term) {
+      event.preventDefault()
+      this.props.history.push(`/bars/${location}/${term || ''}`)
+      this.fetchBars(location, term)
+    }
   }
+
+handleSortRating = event => {
+  const { bars } = this.state
+  const sortedBars = bars.sort((a,b) => {
+    return b.rating - a.rating
+  })
+  
+  this.setState({ bars: sortedBars })
+}
+
+handleSortLowRating = event => {
+  const { bars } = this.state 
+  const sortedByLowRating = bars.sort((a,b) => {
+    return a.rating - b.rating
+  })
+  this.setState({ bars: sortedByLowRating})
+}
+
 
   fetchBars = (location, term) => {
     if (!location) return;
+    localStorage.setItem('location', location)
+    localStorage.setItem('term', term)
     const url = `/api/bars/search/${location}/${term || ''}`;
     fetch(url)
     .then(response => response.json())
@@ -45,7 +67,7 @@ class BarsList extends React.Component {
       <React.Fragment>
       <h1 className="h1-will"><a href="/">BarHop</a></h1>
       {this.state.loader ? <img src={Beer} className="loader" alt="beer"/> : ''}
-        <form className="form-class" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className="div2">
             <input
               id="location"
@@ -55,6 +77,7 @@ class BarsList extends React.Component {
               onChange={this.handleInputChange('location')}
               value={this.state.location}
               required
+              spellCheck="false"
             />
             <input
               type="text"
@@ -62,12 +85,20 @@ class BarsList extends React.Component {
               placeholder="Search a bar by keyword"
               onChange={this.handleInputChange('term')}
               value={this.state.term}
+              required
+              spellCheck="false"
             />
+            <button type="submit" id="transparent-button">
+            <img src={Beer} 
+            className="beer-icon" 
+            alt="beer-icon"
             
-            <img src={Beer} className="beer-icon" alt="beer-icon"/>
-           
+            />
+            </button>
             </div>
         </form>
+        <button className="highratingbutton" onClick={this.handleSortRating}>Sort By Highest Rated </button>
+        <button className="lowratingbutton" onClick={this.handleSortLowRating}>Sort By Lowest Rated</button>
         
       <div className="barlist">
         {
