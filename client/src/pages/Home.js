@@ -22,20 +22,18 @@ class Home extends React.Component{
           className="home-page-form"
           onSubmit={this.handleSearch}
         >
-         
           <div className="home-search-box">
-            <label
+            <label 
+              className="home-page-label"
               htmlFor="home-search-id"
             >  
               <img src={Beer} alt="beer icon" />
-            
-
             <input
               id="search-box-id"
               className="home-page-input"
               name="query"
               type="text"
-              // placeholder=""
+              spellCheck="false"
               autoComplete="off"
               onChange={this.handleInputChange}
             />
