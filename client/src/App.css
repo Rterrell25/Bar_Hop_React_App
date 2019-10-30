@@ -120,9 +120,8 @@ button:hover{
 }
 
 body {
-  background: #1f254bcd;
-  backdrop-filter: 10px;
-  background-size: contain;
+  background: rgb(90,128,144);
+  background: radial-gradient(circle, rgba(90,128,144,1) 0%, rgba(9,121,115,1) 49%, rgba(3,44,68,1) 100%);
 }
 
 .beer-icon {
@@ -179,20 +178,24 @@ body {
 .highratingbutton {
   width: 200px;
   height: 50px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.74);
 }
 .lowratingbutton {
   width: 200px;
   height: 50px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.74);
 }
 
 .pricelow {
   width: 200px;
   height: 50px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.74);
 }
 
 .pricehigh {
   width: 200px;
   height: 50px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.74);
 }
 
 @keyframes hop {
