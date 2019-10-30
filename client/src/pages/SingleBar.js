@@ -24,6 +24,7 @@ fetchReviews = () => {
 }
 
 render(){
+  console.log(this.state)
   const location = localStorage.getItem('location')
   const term = localStorage.getItem('term') || ''
   return(
@@ -60,7 +61,7 @@ render(){
                 </tr>
                 <tr>
                   <td>Phone: </td>
-                  <td>{this.state.bar["display_phone"]}</td>
+                  <td>{this.state.bar.display_phone|| 'Phone Not Available'}</td>
 
                 </tr>
                 <tr>
@@ -69,7 +70,7 @@ render(){
                 </tr>
                 <tr>
                   <td>Price: </td>
-                  <td>{this.state.bar["price"]}</td>
+                  <td>{this.state.bar.price|| 'Price Not Available'}</td>
                 </tr>
                 <tr>
                   <td>Address: </td>
