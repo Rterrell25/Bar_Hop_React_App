@@ -38,6 +38,7 @@ render(){
         this.state.loader ?
         <img src={Beer} className="loaderRob" alt="beer"/> :
         <>
+        <div className ="rob-full-container">
           <div className="single-bar-rob">
             <h1 className="single-page-title">{this.state.bar.name}</h1>
           </div>
@@ -87,6 +88,7 @@ render(){
               </table>
             }
           <div>
+          </div>
           </div>
           </div>
         </div>
